@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-// private IP addresses: 10.x.x.x, 192.168.x.x, 172.16-31.x.x
 class Main {
     public static void main(String[] args) {
         System.out.println("Hello world.");
