@@ -11,7 +11,7 @@ class Main {
 
             String[] myIP = ip.split("\\.");
             System.out.println(Arrays.toString(myIP));
-            n.getNetworkIPs(myIP);
+            n.getNetworkDevices(myIP);
         } catch (Exception e) {
             e.printStackTrace();
         }

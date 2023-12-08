@@ -46,7 +46,7 @@ public class Nmap {
     }
 
     // private IP addresses: 10.x.x.x/24, 192.168.x.x/16, 172.16-31.x.x/20 depending on private ip in use
-    public String[] getNetworkIPs(String[] myIP) {
+    public String[] getNetworkDevices(String[] myIP) {
             System.out.println(myIP);
             if (myIP[0].equals("10")) { // scan 10.0.0.0/24
                 try {
