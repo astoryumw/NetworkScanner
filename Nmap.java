@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Nmap {
     // method only finds ifconfig
@@ -10,7 +11,7 @@ public class Nmap {
         try {
             // InetAddress ip = InetAddress.getLocalHost();
             // System.out.println(ip.getHostAddress());
-            Process process = Runtime.getRuntime().exec("ifconfig en0"); //wlan0
+            Process process = Runtime.getRuntime().exec("ifconfig wlan0"); //wlan0
             process.waitFor();
             BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String theReadBuffer = "";
@@ -46,29 +47,60 @@ public class Nmap {
     }
 
     // private IP addresses: 10.x.x.x/24, 192.168.x.x/16, 172.16-31.x.x/20 depending on private ip in use
-    public String[] getNetworkDevices(String[] myIP) {
+    public ArrayList<String> getNetworkIPs(String[] myIP) {
             System.out.println(myIP);
+            ArrayList<String> myList = new ArrayList<String>();
             if (myIP[0].equals("10")) { // scan 10.0.0.0/24
                 try {
                     String command = "nmap -sn 10.0.0.0/24";
                     Process process = Runtime.getRuntime().exec(command);
                     BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
                     String line = "";
+
                     while ((line = br.readLine()) != null) {
-                        System.out.println(line + "\n");
+                        // System.out.println(line + "\n");
+                        myList.add(line + "\n");
                     }
+                    return myList;
                 } catch (IOException ioe){
                     ioe.printStackTrace();
+                    return null;
                 }
-                return myIP;
+
             } else if (myIP[0].equals("192") && myIP[1].equals("168")) {
+                try {
+                    String command = "nmap -sn 192.168.0.0/16";
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line = "";
 
-                return myIP;
+                    while ((line = br.readLine()) != null) {
+                        // System.out.println(line + "\n");
+                        myList.add(line + "\n");
+                    }
+                    return myList;
+                } catch (IOException ioe){
+                    ioe.printStackTrace();
+                    return null;
+                }
             } else if (myIP[0].equals("172") && Integer.parseInt(myIP[1])>15 && Integer.parseInt(myIP[1])<32) {
+                try {
+                    String command = "nmap -sn 172." + myIP[1] + ".0.0/20";
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line = "";
 
-                return myIP;
+                    while ((line = br.readLine()) != null) {
+                        // System.out.println(line + "\n");
+                        myList.add(line + "\n");
+                    }
+                    return myList;
+                } catch (IOException ioe){
+                    ioe.printStackTrace();
+                    return null;
+                }
             } else {
-                System.out.println("You're fucked.");
+                System.out.println("Thats not a private IP address mate.");
                 return null;
             }
     }
