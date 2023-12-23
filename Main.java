@@ -14,6 +14,8 @@ class Main {
             System.out.println(Arrays.toString(myIP));
             ArrayList<String> networkIPs = n.getNetworkIPs(myIP);
             System.out.println(networkIPs);
+            File f = new File();
+            f.saveMe(networkIPs);
         } catch (Exception e) {
             e.printStackTrace();
         }
