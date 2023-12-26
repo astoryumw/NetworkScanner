@@ -1,0 +1,18 @@
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-26 14:13 EST
+Nmap scan report for 10.0.0.1
+Host is up (0.018s latency).
+Nmap scan report for 10.0.0.38
+Host is up (0.00031s latency).
+Nmap scan report for 10.0.0.40
+Host is up (0.084s latency).
+Nmap scan report for 10.0.0.67
+Host is up (0.077s latency).
+Nmap scan report for 10.0.0.149
+Host is up (0.044s latency).
+Nmap scan report for 10.0.0.151
+Host is up (0.057s latency).
+Nmap scan report for 10.0.0.194
+Host is up (0.055s latency).
+Nmap scan report for 10.0.0.232
+Host is up (0.022s latency).
+Nmap done: 256 IP addresses (8 hosts up) scanned in 3.26 seconds
