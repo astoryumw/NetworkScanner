@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class File {
+    // saves file
     public void saveMe(ArrayList<String> myItem) {
         System.out.println(myItem);
 

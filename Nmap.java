@@ -47,6 +47,7 @@ public class Nmap {
     }
 
     // private IP addresses: 10.x.x.x/24, 192.168.x.x/16, 172.16-31.x.x/20 depending on private ip in use
+    // scans private IP range and returns result
     public ArrayList<String> getNetworkIPs(String[] myIP) {
             System.out.println(myIP);
             ArrayList<String> myList = new ArrayList<String>();
@@ -103,5 +104,50 @@ public class Nmap {
                 System.out.println("Thats not a private IP address mate.");
                 return null;
             }
+
+    }
+
+    // what was this method supposed to be again?
+    public String[] addToArray(ArrayList<String> networkIPs) {
+        System.out.println(networkIPs.get(0)); // should print out first  line
+        String[] splitString = networkIPs.get(0).split(" ");
+        // if (splitString)
+
+
+        return null;
+    }
+
+    // list of basic nmap scans
+    public static void basicScansList() {
+        System.out.println("Here are a few basic scans you can use.");
+        System.out.println("Just enter the abbreviation(s) seperated by a space and enter when done.");
+        // Scan techniques
+        System.out.println("-sS TCP SYN port scan");
+        System.out.println("-sT TCP Connect port scan");
+        System.out.println("-sU UDP port scan");
+        System.out.println("-sA TCP ACK port scan");
+        // Host discovery
+        System.out.println("-Pn Only port scan");
+        System.out.println("-sn Only host discovery");
+        System.out.println("-PR ARP discovery on local network");
+        System.out.println("-n Disable DNS resolutions");
+        // System.out.println("-p port (-p- for all ports)"); // maybe just auto scan all ports or fast scan -F fast scan
+        // detect version, service, and OS
+        System.out.println("-sV Detect the version of services");
+        System.out.println("-A Enable OS/version detection, script scanning, and traceroute");
+        System.out.println("-O Identify OS using TCP/IP fingerprinting");
+        // use normal timing and performance -T3
+        // NSE script
+        System.out.println("-sC Default script scan");
+        // Firewall/IDS evasion
+        // System.out.println("-f Use fragmented IP packets");
+        // System.out.println("-D Decoy scan");
+        // System.out.println("-g Use given source port number");
+
+    }
+
+    // scan with whatever the user enters
+    public void userSelectedScan(String[] userSelections) {
+        System.out.println(Arrays.toString(userSelections));
     }
 }
