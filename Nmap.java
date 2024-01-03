@@ -147,7 +147,24 @@ public class Nmap {
     }
 
     // scan with whatever the user enters
-    public void userSelectedScan(String[] userSelections) {
-        System.out.println(Arrays.toString(userSelections));
+    public String userSelected(String[] userSelections) {
+        String myString = "nmap";
+        // System.out.println(Arrays.toString(userSelections));
+        for (int i=1; i<userSelections.length; i++) {
+            myString = myString + " " + userSelections[i];
+        }
+        myString = myString + " " + userSelections[0];
+        // System.out.println(myString);
+        return myString;
+    }
+
+    public void userSelectedScan(String selection) {
+        Process process = Runtime.getRuntime().exec(selection);
+        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+        String line = "";
+        while ((line =br.readLine()) != null) {
+            System.out.println(line + "\n");
+        }
     }
 }

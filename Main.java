@@ -36,7 +36,8 @@ class Main {
                 for (int i=1; i<x.length; i++) {
                     x[i] = collecter[i-1];
                 }
-                n.userSelectedScan(x);
+                String selection = n.userSelected(x);
+                n.userSelectedScan(selection);
             }
             // String[] ipList = n.addToArray();
             // String[] myString = n.getIfconfig();
