@@ -1,4 +1,4 @@
-This will eventually be a personal network scanner.
+This will eventually be a personal network scanner using nmap, like Zenmap.
 
 Done: Can scan network, find IP address, see items on network
 
