@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 // import java.io.IOException;
 
 class Main {
-    File myObj = new File("ScanResults1.txt");
+    File myObj = new File("ScanResults.txt");
     public static void main(String[] args) {
         // System.out.println("Hello world.");
         try {
@@ -44,8 +44,13 @@ class Main {
                 String[] myString = n.getIfconfig();
                 String ip = n.findIP(myString);
                 System.out.println(ip);
+
+                String[] myIP = ip.split("\\.");
+                ArrayList<String> networkIPs = n.getNetworkIPs(myIP);
+                File f = new File();
+                f.saveMe(networkIPs);
             }
-            // String[] ipList = n.addToArray(); // question mark?
+            // String[] ipList = n.addToArray(); // what was this supposed to do
             // String[] myString = n.getIfconfig();
             // String ip = n.findIP(myString);
             // System.out.println(ip);
