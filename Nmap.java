@@ -159,12 +159,16 @@ public class Nmap {
     }
 
     public void userSelectedScan(String selection) {
-        Process process = Runtime.getRuntime().exec(selection);
-        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        try {
+            Process process = Runtime.getRuntime().exec(selection);
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-        String line = "";
-        while ((line =br.readLine()) != null) {
-            System.out.println(line + "\n");
+            String line = "";
+            while ((line =br.readLine()) != null) {
+                System.out.println(line + "\n");
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 }

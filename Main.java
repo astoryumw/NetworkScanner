@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 // import java.io.IOException;
 
 class Main {
+    File myObj = new File("ScanResults1.txt");
     public static void main(String[] args) {
         // System.out.println("Hello world.");
         try {
@@ -38,8 +39,13 @@ class Main {
                 }
                 String selection = n.userSelected(x);
                 n.userSelectedScan(selection);
+            } else {
+                System.out.println("Nothing saved, start new scan.");
+                String[] myString = n.getIfconfig();
+                String ip = n.findIP(myString);
+                System.out.println(ip);
             }
-            // String[] ipList = n.addToArray();
+            // String[] ipList = n.addToArray(); // question mark?
             // String[] myString = n.getIfconfig();
             // String ip = n.findIP(myString);
             // System.out.println(ip);
@@ -57,7 +63,7 @@ class Main {
 
     // used to open/load a file of IP addresses
     public ArrayList<String> IPs() {
-        File myObj = new File("ScanResults.txt");
+        // File myObj = new File("ScanResults1.txt");
         ArrayList<String> listOfIPSLoaded = new ArrayList<String>();
         try {
             Scanner myReader = new Scanner(myObj);
